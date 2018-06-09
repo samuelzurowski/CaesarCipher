@@ -10,5 +10,6 @@
 #define CaesarEncrypt_hpp
 
 #include <stdio.h>
-void encrypt();
+#include <iostream>
+std::string encrypt(std::string message, int shiftAmount);
 #endif /* CaesarEncrypt_hpp */

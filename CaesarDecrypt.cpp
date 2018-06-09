@@ -10,19 +10,11 @@
 #include <iostream>
 #include <vector>
 
-void decrypt() {
-    std::string message;
-    char ch;
-    int shiftAmount;
-    
-    std::cout << "Enter Message to Decrypt: ";
-    std::cin >> message;
-    
-    std::cout << "Enter Shift Amount: ";
-    std:: cin >> shiftAmount;
-    shiftAmount = shiftAmount % 26;
-    std::cout << "Shift Amount: " << shiftAmount << std::endl;
+std::string decrypt(std::string message, int shiftAmount) {
     std::vector<char> messageVector(message.begin(), message.end());
+    char ch;
+    shiftAmount = shiftAmount % 26;
+
     for (int i = 0; i < static_cast<int>(messageVector.size()); i++) {
         ch = messageVector.at(i);
         if(ch >= 'a' && ch <= 'z') {
@@ -44,5 +36,5 @@ void decrypt() {
     for(int i=0; i < static_cast<int>(messageVector.size()); i++) {
         message += messageVector.at(i);
     }
-    std::cout << "Decrypted Message: " + message << std::endl;;
+    return message;
 }

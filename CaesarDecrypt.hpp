@@ -10,5 +10,6 @@
 #define CaesarDecrypt_hpp
 
 #include <stdio.h>
-void decrypt();
+#include <iostream>
+std::string decrypt(std::string message, int shiftAmount);
 #endif /* CaesarDecrypt_hpp */

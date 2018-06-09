@@ -10,22 +10,10 @@
 #include <iostream>
 #include <vector>
 
-void encrypt() {
-    std::string message;
-    char ch;
-    int shiftAmount;
-
-    std::cout << "Enter Message to Encrypt: ";
-    std::cin >> message;
-    while(message.size() < 2) {
-        std::cout << "Please enter a message longer than one character: ";
-        std::cin >> message;
-    }
-    std::cout << "Enter Shift Amount: ";
-    std:: cin >> shiftAmount;
-    shiftAmount = shiftAmount % 26;
-    std::cout << "Shift Amount: " << shiftAmount << std::endl;
+std::string encrypt(std::string message, int shiftAmount) {
     std::vector<char> messageVector(message.begin(), message.end());
+    char ch;
+    shiftAmount = shiftAmount % 26;
 
     for (int i = 0; i < static_cast<int>(messageVector.size()); i++) {
         ch = messageVector.at(i);
@@ -44,9 +32,9 @@ void encrypt() {
             messageVector.at(i) = ch;
         }
     }
-        message = "";
-        for(int i=0; i < static_cast<int>(messageVector.size()); i++) {
-            message += messageVector.at(i);
-        }
-        std::cout << "Encrypted Message: " + message << std::endl;
+    message = "";
+    for(int i=0; i < static_cast<int>(messageVector.size()); i++) {
+        message += messageVector.at(i);
     }
+    return message;
+}
