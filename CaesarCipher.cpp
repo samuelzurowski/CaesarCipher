@@ -20,8 +20,8 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "Original Message: " << message << std::endl;
     std::string encryptMessage = encrypt(message, shiftAmount);
-    std::cout << "Encrypted Message: " << encryptMessage << std::endl;
+    std::cout << "Encrypted Message: " << encryptMessage << std::endl; // encrypted
     std::string decryptMessage = decrypt(encryptMessage, shiftAmount);
-    std::cout << "Decrypted Message: " << decryptMessage << std::endl;
+    std::cout << "Decrypted Message: " << decryptMessage << std::endl; // decrypted
     return 0;
 }

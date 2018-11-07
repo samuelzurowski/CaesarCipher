@@ -13,20 +13,21 @@
 std::string decrypt(std::string message, int shiftAmount) {
     std::vector<char> messageVector(message.begin(), message.end());
     char ch;
-    shiftAmount = shiftAmount % 26;
+    shiftAmount = shiftAmount % 26; // to loop back modulo
 
+    // cast int for loop
     for (int i = 0; i < static_cast<int>(messageVector.size()); i++) {
-        ch = messageVector.at(i);
-        if(ch >= 'a' && ch <= 'z') {
-            ch = ch - shiftAmount;
+        ch = messageVector.at(i); // get value at i
+        if(ch >= 'a' && ch <= 'z') { // checks if its between lowercase char
+            ch = ch - shiftAmount; // shifts letter
             if(ch < 'a') {
-                ch = ch + 'z' - 'a' + 1;
+                ch = ch + 'z' - 'a' + 1; // if less shift it based alpha
             }
-            messageVector.at(i) = ch;
+            messageVector.at(i) = ch; // sets i equal new char
         }
-        else if(ch >= 'A' && ch <= 'Z') {
-            ch = ch - shiftAmount;
-            if(ch < 'A') {
+        else if(ch >= 'A' && ch <= 'Z') { // used to check capitals
+            ch = ch - shiftAmount; // shift char
+            if(ch < 'A') { // if less does sifting
                 ch = ch + 'Z' - 'A' + 1;
             }
             messageVector.at(i) = ch;
@@ -34,6 +35,7 @@ std::string decrypt(std::string message, int shiftAmount) {
     }
     message = "";
     for(int i=0; i < static_cast<int>(messageVector.size()); i++) {
+        // concatenate message
         message += messageVector.at(i);
     }
     return message;

@@ -13,18 +13,19 @@
 std::string encrypt(std::string message, int shiftAmount) {
     std::vector<char> messageVector(message.begin(), message.end());
     char ch;
-    shiftAmount = shiftAmount % 26;
+    shiftAmount = shiftAmount % 26; // shift modulo
 
+    // cast for loop
     for (int i = 0; i < static_cast<int>(messageVector.size()); i++) {
-        ch = messageVector.at(i);
-        if(ch >= 'a' && ch <= 'z') {
-            ch = ch + shiftAmount;
+        ch = messageVector.at(i); // get value at i
+        if(ch >= 'a' && ch <= 'z') { // check if its lower case in range
+            ch = ch + shiftAmount; // shift
             if(ch > 'z') {
-                ch = ch - 'z' + 'a' - 1;
+                ch = ch - 'z' + 'a' - 1; // shift if greater than z
             }
             messageVector.at(i) = ch;
         }
-        else if(ch >= 'A' && ch <= 'Z') {
+        else if(ch >= 'A' && ch <= 'Z') { // shift based on upper cases
             ch = ch + shiftAmount;
             if(ch > 'Z') {
                 ch = ch - 'Z' + 'A' - 1;
@@ -34,6 +35,7 @@ std::string encrypt(std::string message, int shiftAmount) {
     }
     message = "";
     for(int i=0; i < static_cast<int>(messageVector.size()); i++) {
+        // string concatenation.
         message += messageVector.at(i);
     }
     return message;
